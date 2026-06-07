@@ -1,0 +1,6 @@
+CREATE TABLE supplier (
+ id UUID PRIMARY KEY,
+ name VARCHAR(120) NOT NULL,
+ country VARCHAR(100) NOT NULL,
+ active BOOLEAN
+);
