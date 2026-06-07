@@ -25,7 +25,6 @@ public class SupplierRepositoryAdapter implements SupplierRepository {
 
     @Override
     public Supplier save(Supplier supplier) {
-        log.info(supplier.toString());
         SupplierEntity supplierEntity =  mapper.toEntity(supplier);
         SupplierEntity supplierEntitySave = repository.save(supplierEntity);
         return mapper.toDomain(supplierEntitySave);
