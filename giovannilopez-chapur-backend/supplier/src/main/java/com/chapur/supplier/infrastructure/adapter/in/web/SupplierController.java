@@ -36,7 +36,6 @@ public class SupplierController {
 
     private final SupplierDtoMapper mapper;
 
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Crear nuevo proveedor")

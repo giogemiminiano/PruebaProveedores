@@ -47,7 +47,7 @@ public class SupplierRepositoryAdapter implements SupplierRepository {
         List<Supplier> suppliers = result.getContent().stream().map(mapper::toDomain).toList();
 
         return new PagedResponse<>(suppliers,result.getNumber(),result.getSize(),
-                result.getNumberOfElements(), result.getTotalPages());
+                result.getTotalElements(), result.getTotalPages());
     }
 
 
