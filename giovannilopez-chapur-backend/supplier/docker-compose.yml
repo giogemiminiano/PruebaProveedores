@@ -3,11 +3,6 @@ services:
   app:
     build: .
     container_name: supplier-app
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:h2:mem:supplierDB
       SPRING_DATASOURCE_USERNAME: chapur
