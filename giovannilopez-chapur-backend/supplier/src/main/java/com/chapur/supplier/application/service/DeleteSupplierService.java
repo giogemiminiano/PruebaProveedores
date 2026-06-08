@@ -1,0 +1,36 @@
+package com.chapur.supplier.application.service;
+
+import com.chapur.supplier.domain.exception.GetSupplierException;
+import com.chapur.supplier.domain.model.Supplier;
+import com.chapur.supplier.domain.port.in.DeleteSupplierUseCase;
+import com.chapur.supplier.domain.port.in.UpdateSupplierUseCase;
+import com.chapur.supplier.domain.port.out.SupplierRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+import java.util.UUID;
+
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class DeleteSupplierService implements DeleteSupplierUseCase {
+
+    private final SupplierRepository supplierRespository;
+
+    @Override
+    public boolean delete(UUID id) {
+        Optional<Supplier> supplier= supplierRespository.findById(id);
+        if(supplier.isEmpty()){
+            throw new GetSupplierException(id.toString());
+        }else{
+            Supplier supplierObject = supplier.get();
+            supplierObject.setActive(false);
+            log.info(supplierObject.toString());
+            supplierRespository.save(supplierObject);
+        }
+        return true;
+    }
+}
