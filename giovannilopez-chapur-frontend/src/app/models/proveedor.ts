@@ -2,5 +2,13 @@ export interface Proveedor {
     id: string;
     name: string;
     country: string;
-    active: boolean;
+}
+
+
+export interface ProveedorResponse {
+  content: Proveedor[];
+  page: number;
+  size: number;
+  totalElements: number;
+  totalPage: number;
 }
