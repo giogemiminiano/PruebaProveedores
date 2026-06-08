@@ -8,8 +8,6 @@ public record CreateSupplierRequest (
     String name,
 
     @NotBlank
-    String country,
-
-    Boolean active
+    String country
 ){
 }

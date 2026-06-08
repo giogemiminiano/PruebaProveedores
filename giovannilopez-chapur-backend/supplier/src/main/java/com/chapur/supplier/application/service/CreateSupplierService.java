@@ -20,6 +20,7 @@ public class CreateSupplierService implements CreateSupplierUseCase {
     @Override
     public Supplier create(Supplier supplier) {
         supplier.setId(UUID.randomUUID());
+        supplier.setActive(true);
         log.info(supplier.toString());
         return supplierRespository.save(supplier);
     }

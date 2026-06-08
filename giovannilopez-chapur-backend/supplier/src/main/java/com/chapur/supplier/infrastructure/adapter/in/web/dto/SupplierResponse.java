@@ -10,8 +10,6 @@ public record SupplierResponse (
 
         String name,
 
-        String country,
-
-        Boolean active
+        String country
 ){
 }

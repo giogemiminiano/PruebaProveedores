@@ -13,18 +13,18 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(MockitoExtension.class)
-public class UpdateSupplierUseCaseTest {
+public class DeleteSupplierUseCaseTest {
 
     @Mock
     private SupplierRepository repository;
 
     @InjectMocks
-    private UpdateSupplierService service;
+    private DeleteSupplierService service;
 
     @Test
     void updateSupplierTestSuccess(){
@@ -32,13 +32,13 @@ public class UpdateSupplierUseCaseTest {
         Optional<Supplier> list = Optional.of(supplier);
         when(repository.findById(any(UUID.class))).thenReturn(list);
         when(repository.save(any(Supplier.class))).thenReturn(supplier);
-        boolean success = service.update(UUID.randomUUID(),"Test","USA");
+        boolean success = service.delete(UUID.randomUUID());
         assertTrue(success);
     }
 
     @Test
     void updateSupplierTestFail(){
-        assertThrows(GetSupplierException.class,()->service.update(UUID.randomUUID(),"A","B"));
+        assertThrows(GetSupplierException.class,()->service.delete(UUID.randomUUID()));
     }
 
     Supplier generateSupplier(){

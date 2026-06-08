@@ -5,9 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 public record UpdateSupplierRequest (
 
         String name,
-
-        String country,
-
-        Boolean active
+        String country
 ){
 }

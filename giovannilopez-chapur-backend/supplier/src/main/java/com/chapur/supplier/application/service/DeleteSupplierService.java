@@ -2,6 +2,7 @@ package com.chapur.supplier.application.service;
 
 import com.chapur.supplier.domain.exception.GetSupplierException;
 import com.chapur.supplier.domain.model.Supplier;
+import com.chapur.supplier.domain.port.in.DeleteSupplierUseCase;
 import com.chapur.supplier.domain.port.in.UpdateSupplierUseCase;
 import com.chapur.supplier.domain.port.out.SupplierRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,23 +16,18 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UpdateSupplierService implements UpdateSupplierUseCase {
+public class DeleteSupplierService implements DeleteSupplierUseCase {
 
     private final SupplierRepository supplierRespository;
 
     @Override
-    public boolean update(UUID id, String name, String country) {
+    public boolean delete(UUID id) {
         Optional<Supplier> supplier= supplierRespository.findById(id);
         if(supplier.isEmpty()){
             throw new GetSupplierException(id.toString());
         }else{
             Supplier supplierObject = supplier.get();
-            if(country!=null && !country.isEmpty())
-                supplierObject.setCountry(country);
-
-            if(name!=null && !name.isEmpty())
-                supplierObject.setName(name);
-
+            supplierObject.setActive(false);
             log.info(supplierObject.toString());
             supplierRespository.save(supplierObject);
         }

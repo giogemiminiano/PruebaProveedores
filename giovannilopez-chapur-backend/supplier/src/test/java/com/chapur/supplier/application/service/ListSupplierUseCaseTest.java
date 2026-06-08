@@ -2,6 +2,7 @@ package com.chapur.supplier.application.service;
 
 import com.chapur.supplier.domain.model.Supplier;
 import com.chapur.supplier.domain.port.out.SupplierRepository;
+import com.chapur.supplier.infrastructure.adapter.in.web.dto.PagedResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,8 +29,17 @@ public class ListSupplierUseCaseTest {
     void ListSupplierTestSuccess(){
         List<Supplier> list = new ArrayList<>();
         list.add(this.generateSupplier());
-        when(repository.findAll()).thenReturn(list);
-        assertNotNull(service.findAll());
+        PagedResponse<Supplier> pagedResponse =
+                new PagedResponse<>(
+                        list,
+                        0,
+                        10,
+                        1,
+                        1
+                );
+
+        when(repository.findAll(0,10)).thenReturn(pagedResponse);
+        assertNotNull(service.findAll(0,10));
     }
 
 
