@@ -34,7 +34,7 @@ public class ListSupplierUseCaseTest {
                         list,
                         0,
                         10,
-                        1,
+                        1l,
                         1
                 );
 
