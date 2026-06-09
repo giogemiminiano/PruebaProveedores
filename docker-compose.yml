@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: ./giovannilopez-chapur-backend/supplier
+    container_name: supplier-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:supplierDB
+      SPRING_DATASOURCE_USERNAME: chapur
+      SPRING_DATASOURCE_PASSWORD: chapur
+    ports:
+      - "8080:8080"
+      
+  frontend:
+    build:
+      context: ./giovannilopez-chapur-frontend
+    container_name: proveedores-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend

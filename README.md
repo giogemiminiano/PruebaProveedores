@@ -19,6 +19,7 @@ Proyecto donde se hace uso frontend y backend para aplicativo de gestión de pro
 ## Instrucciones
 1- Para probar el backend, se puede realizar con el comando mvn spring-boot:run, dejando la siguiente ruta disponible: http://localhost:8080/api/v1/supplier-service
 2- Levantar el frontend, se puede realizar con ng serve, y podra validarse en : http://localhost:4200/
+3- Opcional: los proyectos cuentan con su dockerfile, por lo que se puede ocupar el compose para levantar ambos: docker compose up
 
 ## giovannilopez-chapur-backend
 El proyecto de springboot, permite alta,consulta,listado y actualización de proveedores.
